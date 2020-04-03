@@ -1,0 +1,70 @@
+01/04/20
+
+Process Identifiers:-
+A PID (i.e., process identification number) is an identification number that is automatically assigned to each
+process when it is created. 
+If the process is terminated its ID can be reused.
+Unix Systems Delays reuse ID so that to prevent confusion between new and old processes
+
+Some Special processes IDs
+1. Process 0: scheduler process(swapper process), part of kernel and thus a system process.
+2. Process 1: init process, invoked by the kernel at the end of the bootstrap procedure.
+              * Responsible for bringing up a UNIX system after the kernel has been bootstrapped.
+              * It never dies.
+              * It is a normal user process, not a system process within the kernel.
+              * It runs with superuser privileges.
+3 Process 2:Some virtual memory implementations of the UNIX System, process ID 2 is the pagedaemon.
+            This process is responsible for supporting the paging of the virtual memory system.
+
+Fork Function:- An existing process can create a new one by calling the fork function.
+The fork function returns: 0 in child, process ID of child in parent, −1 on error.
+Returns 0 in child, process ID of child in parent, −1 on error.
+A process can have more than one child.
+There is no function that allows a process to obtain the process IDs of its children.
+A process can have only a single parent, and the child can call getppid to obtain the process ID of its parent.
+The child process gets a copy of the parent’s data space, heap, and stack.
+Modern implementation doesn't copy complete. Only shared region of memory is copied.
+We don't know the order of execution between child and parent. 
+The order depends on the scheduling algorithm used by the kernel.
+Use cases of fork:
+1.To execute different chuck of code parallelly.
+2.When process wants to execute different program. 
+
+vfork function:
+It is a variation of fork function.
+It was intended to create a new process for the purpose of executing a new program 
+Vfork assures that child process runs before parent.
+
+02/04/20
+
+Exit functions
+_exit: returns to the kernel immediately
+_Exit: same as _exit
+exit: performs certain cleanup processing and then returns to the kernel. 
+Exit status: is the argument to one of the three exit functions or the return value from main.
+Termination status: The exit status is converted into a termination status by the kernel when _exit is finally called. 
+                    If the child terminated normally,the parent can obtain the exit status of the child.
+Orphan process (or orphaned child process) is any process whose parent terminates.
+Zombie process is a process that has terminated, but whose parent has not yet waited for it.
+
+
+wait and waitpid Functions
+
+If a process terminates, either normally or abnormally, the kernel notifies the parent by sending
+the SIGCHLD signal to the parent.
+Termination of a child is an asynchronous event i.e it can happen at any time while the parent is running.
+The wait function can block the caller until a child process terminates, whereas waitpid has an option that prevents it from blocking.
+The waitpid function doesn’t wait for the child that terminates first; it has a number of options that control which process it waits for.
+
+waitpid function:-
+wait for a specific process
+
+pid == −1 - Waits for any child process. In this respect, waitpid is equivalent to wait.
+pid > 0 - Waits for the child whose process ID equals pid.
+pid == 0 - Waits for any child whose process group ID equals that of the calling process.
+pid < −1 - Waits for any child whose process group ID equals the absolute value of pid.
+
+waitid function:-
+Like waitpid, waitid allows a process to specify which children to wait for. Instead of using a single argument, combined
+with the process ID or process group ID, two separate arguments are used.
+The id parameter is interpreted based on the value of idtype.
