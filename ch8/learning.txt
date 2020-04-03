@@ -18,7 +18,7 @@ Some Special processes IDs
 
 Fork Function:- An existing process can create a new one by calling the fork function.
 The fork function returns: 0 in child, process ID of child in parent, −1 on error.
-Returns 0 in child, process ID of child in parent, −1 on error.
+
 A process can have more than one child.
 There is no function that allows a process to obtain the process IDs of its children.
 A process can have only a single parent, and the child can call getppid to obtain the process ID of its parent.
