@@ -138,7 +138,7 @@ logged on to that terminal.
 Process Scheduling:-
 Nice values: They are basically user level values that we use to control the priority of
 proesses. Its range -20 to 19 where -20 is highest , 0 is default and +19 is lowest.
-
+nice function can modify a processes's nice value.
 A child process inherit its nice value from parent process.
 
 
