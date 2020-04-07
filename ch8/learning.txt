@@ -68,3 +68,77 @@ waitid function:-
 Like waitpid, waitid allows a process to specify which children to wait for. Instead of using a single argument, combined
 with the process ID or process group ID, two separate arguments are used.
 The id parameter is interpreted based on the value of idtype.
+
+03/04/20
+Race Condition:-
+A race condition occurs when multiple processes/threads use same variable at the same time. For example if there
+are two processes P and C both working with a single variable. Now if the 1st process and 2nd process do their
+operation on the value, they are in race conditon. The value updated by most recent process will be preserved
+and the value updated by former variable will be overwritten.
+
+This can be overcome by delaying execution of processes but this approach waste cpu time.
+
+Exec Function:-
+One use of the fork function is to create a new process (the child) that then causes another
+program to be executed by calling one of the exec functions.
+exec functions initiates new programs
+There are seven different exec functions. 
+When the exec is called the process ID doesn't change and the new program inherits properties of calling
+process.
+
+exec library functions and system call:-
+In many UNIX system implementations, only one of these seven functions, execve, is a system call within the 
+kernel.The other six are just library functions that eventually invoke this system call.
+
+
+Changing User IDs and Group IDs:
+In the UNIX System, privileges and access control are on user and group IDs. When programs need additional
+privileges or access to unallowed resources, they need to change their user or group ID to an ID that has the
+appropriate privilege or access.
+We should try to use the least-privilege model ie our programs should use the least privilege necessary to 
+accomplish any given task. This reduces the risk that security might be compromised by a malicious user trying
+to trick our programs into using their privileges in unintended ways.
+
+setuid and setgid
+We can set the real user ID and effective user ID with the setuid function and set the real group ID and the effective
+group ID with the setgid function.
+
+setreuid & setregid functions
+An unprivileged user can always swap between the real user ID and the effective user ID. 
+This allows a set-user-ID program to swap to the user’s normal permissions and swap back again later for set-user-ID operations.
+
+seteuid and setegid functions
+An unprivileged user can set its effective user ID to either its real user ID or its saved set-user-ID.
+For a privileged user, only the effective user ID is set to uid. 
+This differs from setuid function, which changes all three user IDs.
+
+04/04/20
+
+Interpreter Files:-
+The interpreter file is the program that runs the rest of the script. The main use of specifying an interpreter file is to make it easier to run 
+the program and to make sure the correct interpreter is used.
+
+Interpreter: is specified by the pathname on the first line of the interpreter file.
+
+System Function:- It is convenient to execute a command string from within a program.
+
+05/04/20
+Revision
+
+06/04/20
+Process Accounting:-
+The Linux kernel has a built-in process accounting functionality. 
+It allows to collect detailed information in a log file each time a program is 
+executed. Then we can infer these log files and find any issue.
+
+User Identification:- 
+Basically getlogin function returns a pointer to a string containing name of the user
+logged on to that terminal.
+
+Process Scheduling:-
+Nice values: They are basically user level values that we use to control the priority of
+proesses. Its range -20 to 19 where -20 is highest , 0 is default and +19 is lowest.
+
+A child process inherit its nice value from parent process.
+
+
