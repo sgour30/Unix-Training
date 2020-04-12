@@ -1,0 +1,1 @@
+The same output will be showed.

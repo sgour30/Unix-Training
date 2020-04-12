@@ -1,0 +1,40 @@
+09/04/20
+
+Terminal logins :-
+It can be used to log in to a system using terminal of any type.
+Be it character based , character based graphical or GU windowing system.
+
+getty is a process that sets up the terminal.
+
+Event flow of login:
+pid 1(init)--fork-->init--exec-->getty--exec--> login
+
+When the system is booted , kernel creates pid 1, i.e init process and 
+init brings system to multiuser mode.The init process reads the file /etc/ttys and, for every terminal device that allows a login, does a fork followed by an exec of the program getty. 
+getty calls open for the terminal device. The terminal is opened for reading and writing. Once the device is open, file descriptors 0, 1, and 2 are set to the device.
+getty outputs something like login: and waits for us to enter our user name.
+Invokes the login program: execle("/bin/login", "login", "-p", username, (char *)0, envp);
+
+Now the login program will 1)change our home dir 
+2)change ownership
+3)change access permission
+4)initialize environment
+
+
+10/04/20
+
+Process Groups :-
+Each process have a process ID and belongs to a process group.
+A process group is a collection of 1 or more process performing same job from same terminal.
+There exists unique process group ID for every group.
+
+Process group lifetime- Process group ID exists till the last process exists in that group.
+A process can join an existing process group or creates a new process group by calling setpgid.
+
+Session :-A session is a collection of one or more process groups.
+
+
+
+
+
+

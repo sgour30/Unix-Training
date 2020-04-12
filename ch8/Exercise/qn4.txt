@@ -1,0 +1,1 @@
+This happens because of Race Condition between parent and child process. We can avoid it by letting the child process finish first and then the parent process.
