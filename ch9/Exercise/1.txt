@@ -1,0 +1,1 @@
+Because init is parent is parent process of shell whereas in a network login init is not provoked.

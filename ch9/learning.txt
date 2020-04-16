@@ -33,7 +33,30 @@ A process can join an existing process group or creates a new process group by c
 
 Session :-A session is a collection of one or more process groups.
 
+11/04/20
 
+Controlling Terminal
+The session leader that establishes the connection to the controlling terminal is called the controlling process.
+The process groups within a session can be divided into a single foreground process group and one or more background process groups.
+
+tcgetpgrp, tcsetpgrp, and tcgetsid Functions:-
+We need a way to tell the kernel which process group is the foreground process group, so that the terminal device driver knows where to send the terminal input and the terminal-generated signals.
+The function tcgetpgrp returns the process group ID of the foreground process group associated with the terminal open on fd.
+The tcgetsid function allows an application to obtain the process group ID for the session leader given a file descriptor for the controlling TTY.
+
+13/04/20
+
+Job Control:-
+Job control let us start multiple groups of processes from the terminal so that we can control which task is to be run in
+foreground and which task is in background.
+
+14/04/20
+Orphaned Process:-
+A process whose parent terminates is called an orphan and is inherited by the init process. The entire process groups that can be orphaned.
+
+
+
+ 
 
 
 
