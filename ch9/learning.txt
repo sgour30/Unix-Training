@@ -48,11 +48,31 @@ The tcgetsid function allows an application to obtain the process group ID for t
 
 Job Control:-
 Job control let us start multiple groups of processes from the terminal so that we can control which task is to be run in
-foreground and which task is in background.
+foreground and which task is in background. Some of the built in Job control Builtins are 
+bg-  Place job to background
+gf- place job to foreground
+jobs- lists active jobs
+suspend suspends execution of shell
 
 14/04/20
 Orphaned Process:-
 A process whose parent terminates is called an orphan and is inherited by the init process. The entire process groups that can be orphaned.
+The following events occurs:
+The shell places the foreground process into its own process group
+After fork, the parent sleeps for 5 seconds.
+The child establishes a signal handler for the hang-up signal (SIGHUP)
+The child sends itself the stop signal (SIGTSTP) with the kill function.
+When the parent terminates, the child is orphaned, so the child’s parent process ID becomes 1, which is the init process ID.
+Now the child becomes member of orphaned process group.
+
+FreeBSD implementation:-
+The figure shown in book explains the implementation of session and process group
+It depicts various structures that are related to this such as
+tty structure- It is contained in the kernel for each terminal device and each pseudo terminal device
+session structure - It is allocated for each session
+prgp structure- It contains information about process groups such as their IDs, session, member 
+vnode structure - It is allocated when the controlling terminal device is opened. All references to /dev/tty in a process go through this vnode structure.
+
 
 
 
