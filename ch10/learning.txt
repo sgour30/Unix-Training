@@ -35,6 +35,6 @@ The second argument, func, is a pointer to a function that takes a single intege
  Interrupted System Calls
  System Calls are those where we ask to perform a function where as an interrupted System calls are those where the return value is some  error.
  There are divisions of interrupted System Calls
- Slow System calls -These system calls can hold a task forever
+ Slow System calls -These system calls can hold a task forever.
  Automatic restarting of system calls .
 
