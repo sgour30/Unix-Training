@@ -38,3 +38,20 @@ The second argument, func, is a pointer to a function that takes a single intege
  Slow System calls -These system calls can hold a task forever.
  Automatic restarting of system calls .
 
+19/04/19
+Rentrant functions:
+When a signal that is being caught is handled by a process, the normal sequence of instructions being executed by the process is temporarily interrupted. It could be:
+1.Just after executing one system call
+2.In the middle of one system call(like malloc), after the signal handler returns, it will continue executing that system call.
+If signal comes in the middle of execution of one system call, and then it return from signal handler to the normal execution of that system call, problems may occur.
+UNIX specifies the functions that are guaranteed to be reentrant, which means, even if it is interrupted in the middle, if coming back from signal handler, it is working well.
+
+20/04/19
+SIGCLD Semantics
+If the process specifically sets its disposition to SIG_IGN, children of the calling process will not generate zombie processes. It means, after children processes terminate, all status information will be discarded. If the calling process calls wait, the calling process will block until all children have terminated and then wait return -1 with errno set to ECHILD
+
+Reliable-Signal Terminology and Semantics:
+When the signal is generated, the kernel usually sets a flag of some form in the process table.
+The signal is delivered to a process when the action for a signal is taken.
+During the time between the generation of a signal and its delivery, the signal is said to be pending.
+If there are more than one signals delivered to the process, the POSIX.1 suggests that the signals related to the current state of the process should be delivered before other signals. But order of signals delevered is not defined.
