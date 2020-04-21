@@ -68,15 +68,15 @@ if(pid > 0): the signal is sent to the process whose process ID is pid
 if(pid == 0): the signal is sent to all processes whose process group ID equals the process group ID of the sender and for which the sender has permission to send the signal
 if(pid < 0): the signal is sent to all processes whose process group ID equals the absolute value of pid and for which the sender has permission to send the signal.
 if(pid == -1): the signal is sent to all processes on the system for which the sender has permission to send the signal.
-the call "raise(signo)" equals "kill(getpid(), signo)".
+The call raise(signo) equals kill(getpid(), signo).
 
 Alarm and Pause Functions:
-A common use for alarm is to check whether a specific system all times out.
-“alarm()” instructs the kernel to send the SIGALRM signal to the calling process after count seconds.
+
+alarm() instructs the kernel to send the SIGALRM signal to the calling process after count seconds.
 If an alarm had already been scheduled, that alarm is overwritten.
 If count is 0, any pending alarm requests are cancelled.
  
-pause()” suspends the calling process and returns when the calling process receives a signal.
+pause() suspends the calling process and returns when the calling process receives a signal.
 It is most often used to wait efficiently for an alarm signal.
 
 Signal Sets:
