@@ -109,3 +109,7 @@ If we want to mask off a signal, do some critical jobs, and then re-enable the s
 Abort function:
 The abort function causes abnormal program termination.
 
+24/04/20
+Sleep Function: This is used to delay the execution for given time duration.
+
+Sigqueue Function: One user-level process may send a signal to another process.
