@@ -113,3 +113,19 @@ The abort function causes abnormal program termination.
 Sleep Function: This is used to delay the execution for given time duration.
 
 Sigqueue Function: One user-level process may send a signal to another process.
+
+26/04/20
+Job control signals
+SIGCHLD, child process has stopped or continued.
+SIGCONT, continue process, if stopped.
+SIGSTOP, stop signal(can't be caught or ignored)
+SIGTSTP, Interactive stop signal
+SIGTTIN, Read from controlling terminal by member of a background process group
+SIGTTOU, Write to controlling terminal by member of a background process group
+
+Signal Names:
+#include <signal.h>
+int sig2str(int signo, char *str);
+int str2sig(const char *str, int *signop);
+These functions are useful when writing interactive programs that need to accept and
+print signal names and numbers.
