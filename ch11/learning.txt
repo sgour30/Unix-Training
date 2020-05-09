@@ -4,3 +4,41 @@ With multiple threads we can do multiple things with same program. Threads can w
 A thread consists of information while executing within a process. Thread ID that identifies the thread within a process, a
 set of register values, a stack, a scheduling priority and policy, a signal mask, an errno
 variable, and thread-specific data. Everything within a process is sharable among the threads in a process, including the text of the executable.
+
+Thread Identification:
+A thread ID is represented by the pthread_t data type.
+A thread can obtain its own thread ID by calling the pthread_self function.
+
+09/05/20
+Thread creation:
+Threads can be created by calling the pthread_create function.
+When a thread is created, there is no guarantee whether the newly created thread or the calling thread.
+
+Thread termination:
+A single thread can exit in 3 ways, without terminating the entire process:
+It can simply return from the start routine. The return value is the thread’s exit code.
+It thread can be canceled by another thread in the same process.
+It thread can call pthread_exit.
+
+Thread Synchronization:
+It is coordinating activities and data access among multiple threads.
+
+Mutexes:
+A mutex is basically a lock that we set (lock) before accessing a shared resource and release (unlock) when we’re done.
+A mutex variable is represented by the pthread_mutex_t data type.
+
+Deadlock Avoidance:
+They can be avoided by carefully controlling the order in which mutexes are locked.
+
+Reader–Writer Locks:
+In these, a mutex is either locked or unlocked, and only one thread can lock it at a time. A reader–writer lock 
+(also called shared–exclusive lock) has three possible states:
+Locked in read mode/shared mode
+Locked in write mode/exclusive mode
+Unlocked Only one thread at a time can hold a reader–writer lock in write mode, but multiple threads can hold a reader–writer 
+lock in read mode at the same time.
+
+Reader-Writer Locks with timeouts:
+Similar to mutexes, Read-Write locks are privided with a timeout functionality so that to give applications may not stuck indeﬁnitely while trying to acquireareader–writer lock. 
+There are basically two functions pthread_rwlock_timedrdlock and pthread_rwlock_timedwrlock.
+
