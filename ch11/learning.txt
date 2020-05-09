@@ -1,1 +1,6 @@
-Threads
+08/05/20
+Thread Concepts:
+With multiple threads we can do multiple things with same program. Threads can work synchronously. Program throughput and response time can be improved by using threads. Multithreading is not limited to multicore processor but also an unicore processor. 
+A thread consists of information while executing within a process. Thread ID that identifies the thread within a process, a
+set of register values, a stack, a scheduling priority and policy, a signal mask, an errno
+variable, and thread-specific data. Everything within a process is sharable among the threads in a process, including the text of the executable.
