@@ -53,4 +53,6 @@ A spin lock could be used in situations where locks are held for short periods o
 threads don’t want to get descheduled.
 
 Barriers:
-It is a synchronization mechanism that can be used to coordinate multiple threads working in parallel. It can help execute any number of threads. A barrier allows each thread to wait until all cooperatingthreads have reached the same point, and then continue executing from there.
+It is a synchronization mechanism that can be used to coordinate multiple threads working in parallel. It can help execute any number
+of threads. A barrier allows each thread to wait until all cooperating threads have reached the same point, and then continue
+executing from there.
