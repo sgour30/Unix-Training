@@ -42,3 +42,15 @@ Reader-Writer Locks with timeouts:
 Similar to mutexes, Read-Write locks are privided with a timeout functionality so that to give applications may not stuck indeﬁnitely while trying to acquireareader–writer lock. 
 There are basically two functions pthread_rwlock_timedrdlock and pthread_rwlock_timedwrlock.
 
+11/05/2020
+Condition Variable:
+A condition variable is an user defined queue that threads can put themselves on when some state of execution is not as expected by
+some other thread, when it changes said state, can then wake one of those waiting threads and thus allow them to continue.
+
+Spin Locks:
+It operates by disabling scheduler and possibly interrupts on that particular resource that the lock is acquired on.
+A spin lock could be used in situations where locks are held for short periods of times and
+threads don’t want to get descheduled.
+
+Barriers:
+It is a synchronization mechanism that can be used to coordinate multiple threads working in parallel. It can help execute any number of threads. A barrier allows each thread to wait until all cooperatingthreads have reached the same point, and then continue executing from there.
