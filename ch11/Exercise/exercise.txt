@@ -1,0 +1,6 @@
+1. We can achieve this by allocating the memory dynamically rather than using
+   an automatic variable.
+
+4. It depends on situation. Both are correct in a way.
+
+5. We need a mutex and condition variable. 

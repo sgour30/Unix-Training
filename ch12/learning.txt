@@ -1,0 +1,37 @@
+
+12/05/20
+In this chapter, we will learn how to control the thread behavior. We will look at attributes of thread.
+
+Thread Limits:
+Different thread limits exists for differnt implementation of threads.
+
+Thread Atrributes:
+pthread interface allows us to control the behavior of threads and
+synchronization objects by setting various attributes associated with each object.
+
+Synchronization Attributes:
+Similar to threads attributes, synchronization objects have attributes.
+In spin locks we have one attribute called the process-shared attribute.
+Attributes of mutexes, reader–writer locks, condition variables,
+and barriers are studied.
+
+Mutex Attributes:
+Mutex attributes are represented by a pthread_mutexattr_t structure.
+The mutex attributes object is initialized to default values by pthread_mutexattr_init. The thread attributes object is destroyed by pthread_mutexattr_destroy. It supports three attributes process-shared,robust and type attribute.
+
+Reader-Writer lock attributes:
+It has locks similar to mutexes.
+pthread_rwlockattr_init  is used to initialize a pthread_rwlockattr_t structure and
+pthread_rwlockattr_destroy to deinitialize the structure. Only process-shared attribute is supported by read write attributes.
+
+Condition Variable Attribute:
+It supports only two attributes ,the process-shared attribute and the clock attribute.
+
+Barrier Attribute:
+We can use the pthread_barrierattr_init function
+to initialize a barrier attributes object and the pthread_barrierattr_destroy
+function to deinitialize a barrier attributes object. Only process shared attribute is defoned for Barriers.
+
+
+
+
