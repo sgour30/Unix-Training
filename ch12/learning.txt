@@ -32,6 +32,32 @@ We can use the pthread_barrierattr_init function
 to initialize a barrier attributes object and the pthread_barrierattr_destroy
 function to deinitialize a barrier attributes object. Only process shared attribute is defoned for Barriers.
 
+13/05/20
+Reentracy:
+Threads acts similar to signal handlers when it comes to reentrancy. In both cases, multiple threads
+of control can potentially call the same function at the same time.
 
+Thread Specific Data:
+It is also called as thread-private data, is a implementation for storing and
+finding data associated with a particular thread. It is called data
+thread-specific, or thread-private, because we need each thread to access its own separate
+copy of the data, without worrying about synchronizing access with other threads.
 
+Cancel option:
+A thread can change its cancelability state by calling
+pthread_setcancelstate.
+
+Threads and Signals:
+Signals are delivered to a single thread in the process. If the signal is related to a
+hardware fault, the signal is usually sent to the thread whose action caused the event.
+Other signals, on the other hand, are delivered to an arbitrary thread.
+
+Threads and fork:
+When a thread calls fork, a copy of the entire process address space is made for the
+child. The child is an entirely different process from the parent, and as long as neither
+one makes changes to its memory contents, copies of the memory pages can be shared between parent and child.
+
+Thread and I/O:
+pread and pwrite functions are helpful in a multithreaded environment, because all threads in a process share the same
+file descriptors.
 
