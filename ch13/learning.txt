@@ -1,0 +1,40 @@
+15/05/20
+
+Introduction to Daemon Processes:
+These are the processes which operates for more time. They are started when the system boots and ends when system shut downs. They does not have a controlling terminal we will learn its beahavoir in error condition.
+
+Daemon Characterestics:
+jdb dameon helps the journal.
+flush daemon flushes out dirty pages.
+kswapd daemon is used for the pageout.
+sync_supers daemon also flushes the system but periodically.
+
+Coding Rules:
+umask  is used to set the file mode usually it will set the creation to 0.
+fork  is used for the different mode of connections in the thread and have the parent exit.
+setid function is used to create a new session.
+It changes the present working directory to the root directory
+The file descriptors which are not being used are closed.
+
+Error Logging:
+Daemon processes does not have the controlling terminal so it faces problem while handling error messages so following ways are there to handle them.
+1.There are log functions which is used by the kernel.
+2.There is syslog function which is used by daemon process.
+3.Some TCP and UDP network protocols are used to generate the log messages.A user process on his host network and the other user on the other host network can transfer logs.
+
+Single-Instance Daemons:
+It is a type of daemon which is used when only one daemon should be run. If multiple instances were running, each copy might try to start a single scheduled operation, resulting in duplicate operations and probably an error.
+
+Daemon Conventions:
+
+1.The lock file of daemon is stored in /var/run. The name used usually is name.pid(name is the name of daemon).
+2.The configuration options of daemon are stored in /etc. It is named as name.conf.
+3.Daemons are started with /etc/rc*. 
+4.Daemon will read any file only when it starts and read only once. If the configuration will changes then daemon will be stopped.
+
+
+Client-Server Model:
+A server is a process that waits for a client to contact it, requesting some type of service. The service provided by the syslogd server is the logging of an error message.
+
+
+
